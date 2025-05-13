@@ -1,0 +1,76 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{B6AD9B0A-C51A-4E73-AAD6-296D05C3D8C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infrastructure", "infrastructure", "{32E8FAA6-AC8D-4E00-AA7D-719ABD1EE530}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "presentation", "presentation", "{ED230DC4-971E-4103-A953-0FA7DBE6D119}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3099AB67-3ADD-4A5D-BFD6-3C63721AAADB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AEA3D71B-CC2E-44B1-BB81-B628AD1157B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{8D89295C-911F-43F2-9E29-1D93E1E93DC5}"
+	ProjectSection(SolutionItems) = preProject
+		build\Directory.Build.props = build\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCxLabs.TechLibraryAPI.API", "src\presentation\FCxLabs.TechLibraryAPI.API\FCxLabs.TechLibraryAPI.API.csproj", "{0FC2CF46-2B43-41F1-8DE6-A08718C4D2FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCxLabs.TechLibraryAPI.Tests", "tests\FCxLabs.TechLibraryAPI.Tests\FCxLabs.TechLibraryAPI.Tests.csproj", "{6BEE4C7D-31FF-465C-BE6F-BFC044AC5A01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCxLabs.TechLibraryAPI.Infrastructure", "src\infrastructure\FCxLabs.TechLibraryAPI.Infrastructure\FCxLabs.TechLibraryAPI.Infrastructure.csproj", "{A16DEDC3-43FD-414B-9B1E-13D74E8D9F9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCxLabs.TechLibraryAPI.Application", "src\core\FCxLabs.TechLibraryAPI.Application\FCxLabs.TechLibraryAPI.Application.csproj", "{2E7643EC-7C03-447F-B895-4092BE8EA7C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCxLabs.TechLibraryAPI.Domain", "src\core\FCxLabs.TechLibraryAPI.Domain\FCxLabs.TechLibraryAPI.Domain.csproj", "{36D75BF6-C7AA-409A-BD40-7D80FE4A64FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "eng", "eng", "{5FD0B4DD-C428-4D64-AA32-8285DE6B1111}"
+	ProjectSection(SolutionItems) = preProject
+		eng\.gitlab-ci.yml = eng\.gitlab-ci.yml
+		eng\Dockerfile = eng\Dockerfile
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FC2CF46-2B43-41F1-8DE6-A08718C4D2FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FC2CF46-2B43-41F1-8DE6-A08718C4D2FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FC2CF46-2B43-41F1-8DE6-A08718C4D2FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FC2CF46-2B43-41F1-8DE6-A08718C4D2FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BEE4C7D-31FF-465C-BE6F-BFC044AC5A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BEE4C7D-31FF-465C-BE6F-BFC044AC5A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BEE4C7D-31FF-465C-BE6F-BFC044AC5A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BEE4C7D-31FF-465C-BE6F-BFC044AC5A01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A16DEDC3-43FD-414B-9B1E-13D74E8D9F9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A16DEDC3-43FD-414B-9B1E-13D74E8D9F9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A16DEDC3-43FD-414B-9B1E-13D74E8D9F9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A16DEDC3-43FD-414B-9B1E-13D74E8D9F9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E7643EC-7C03-447F-B895-4092BE8EA7C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E7643EC-7C03-447F-B895-4092BE8EA7C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E7643EC-7C03-447F-B895-4092BE8EA7C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E7643EC-7C03-447F-B895-4092BE8EA7C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36D75BF6-C7AA-409A-BD40-7D80FE4A64FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36D75BF6-C7AA-409A-BD40-7D80FE4A64FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36D75BF6-C7AA-409A-BD40-7D80FE4A64FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36D75BF6-C7AA-409A-BD40-7D80FE4A64FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B6AD9B0A-C51A-4E73-AAD6-296D05C3D8C2} = {AEA3D71B-CC2E-44B1-BB81-B628AD1157B5}
+		{32E8FAA6-AC8D-4E00-AA7D-719ABD1EE530} = {AEA3D71B-CC2E-44B1-BB81-B628AD1157B5}
+		{ED230DC4-971E-4103-A953-0FA7DBE6D119} = {AEA3D71B-CC2E-44B1-BB81-B628AD1157B5}
+		{0FC2CF46-2B43-41F1-8DE6-A08718C4D2FE} = {ED230DC4-971E-4103-A953-0FA7DBE6D119}
+		{6BEE4C7D-31FF-465C-BE6F-BFC044AC5A01} = {3099AB67-3ADD-4A5D-BFD6-3C63721AAADB}
+		{A16DEDC3-43FD-414B-9B1E-13D74E8D9F9F} = {32E8FAA6-AC8D-4E00-AA7D-719ABD1EE530}
+		{2E7643EC-7C03-447F-B895-4092BE8EA7C1} = {B6AD9B0A-C51A-4E73-AAD6-296D05C3D8C2}
+		{36D75BF6-C7AA-409A-BD40-7D80FE4A64FD} = {B6AD9B0A-C51A-4E73-AAD6-296D05C3D8C2}
+	EndGlobalSection
+EndGlobal
