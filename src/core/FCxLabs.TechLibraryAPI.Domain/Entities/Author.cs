@@ -6,4 +6,6 @@ public class Author
     public string Name { get; set; }
     public DateTime Birth { get; set; }
     public string? Nationality { get; set; }
+
+    public ICollection<Book> Books { get; set; } = [];
 }

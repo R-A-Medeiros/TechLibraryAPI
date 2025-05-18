@@ -2,7 +2,7 @@
 
 namespace FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 
-public class RequestAuthorJson
+public class RequestRegisterAuthorJson
 {
     [Required]
     public string Name { get; set; }

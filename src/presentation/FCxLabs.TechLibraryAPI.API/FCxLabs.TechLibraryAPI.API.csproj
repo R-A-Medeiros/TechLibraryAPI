@@ -7,4 +7,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="Redoc.AspNetCore" Version="1.0.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\core\FCxLabs.TechLibraryAPI.Application\FCxLabs.TechLibraryAPI.Application.csproj" />
+    <ProjectReference Include="..\..\infrastructure\FCxLabs.TechLibraryAPI.Infrastructure\FCxLabs.TechLibraryAPI.Infrastructure.csproj" />
+  </ItemGroup>
 </Project>

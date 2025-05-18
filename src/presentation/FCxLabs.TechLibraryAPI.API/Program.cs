@@ -3,6 +3,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using System;
+using FCxLabs.TechLibraryAPI.Infrastructure.DataAccess;
+using Microsoft.EntityFrameworkCore;
+using FCxLabs.TechLibraryAPI.Infrastructure;
+using FCxLabs.TechLibraryAPI.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +17,12 @@ builder.WebHost.UseUrls("https://localhost:5001");
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<TechLibraryDbContext>(options =>
+    options.UseInMemoryDatabase("DBInMemory"));
+
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
