@@ -21,5 +21,6 @@ public class AutoMapping : Profile
     private void EntityToRequest()
     {
         CreateMap<Author, ResponseRegisteredAuthorJson>();
+        CreateMap<Author, ResponseAuthorJson>();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Author.GetAll;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Register;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
@@ -21,5 +22,20 @@ public class AuthorController : ControllerBase
         var author = await useCase.Execute(request);
 
         return Created(string.Empty, author);
+    }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(ResponseAuthorsJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> GetAll([FromServices] IGetAllAuthorUseCase useCase)
+    {
+        var authors = await useCase.Execute();
+        
+        if (authors.Authors.Count == 0)
+        {
+            return NoContent();
+        }
+
+        return Ok(authors);
     }
 }
