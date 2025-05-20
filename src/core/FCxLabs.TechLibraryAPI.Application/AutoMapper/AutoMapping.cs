@@ -10,7 +10,7 @@ public class AutoMapping : Profile
     public AutoMapping()
     {
         RequestToEntity();
-        EntityToRequest();
+        EntityToResponse();
     }
 
     private void RequestToEntity()
@@ -18,7 +18,7 @@ public class AutoMapping : Profile
         CreateMap<RequestRegisterAuthorJson, Author>();
     }
 
-    private void EntityToRequest()
+    private void EntityToResponse()
     {
         CreateMap<Author, ResponseRegisteredAuthorJson>();
         CreateMap<Author, ResponseAuthorJson>();

@@ -22,4 +22,12 @@ public class AuthorRepository : IAuthorRepository
             .AsNoTracking()
             .ToListAsync();
     }
+
+    public async Task<Author?> GetById(int id)
+    {
+        return await _context
+                            .Authors
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync(a => a.Id == id);
+    }
 }

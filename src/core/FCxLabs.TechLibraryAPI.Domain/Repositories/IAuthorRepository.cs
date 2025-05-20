@@ -6,4 +6,5 @@ public interface IAuthorRepository
 {
     Task Add(Author author);
     Task <List<Author>> GetAll();
+    Task<Author?> GetById(int id);
 }

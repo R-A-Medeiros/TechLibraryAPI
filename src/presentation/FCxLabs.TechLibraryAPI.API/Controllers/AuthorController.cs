@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.GetAll;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Author.GetById;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Register;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
@@ -37,5 +38,15 @@ public class AuthorController : ControllerBase
         }
 
         return Ok(authors);
+    }
+    
+    [HttpGet]
+    [Route("{id}")]
+    [ProducesResponseType(typeof(ResponseAuthorJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> GetById([FromServices] IGetByIdAuthorUseCase useCase, [FromRoute] int id)
+    {
+        var author = await useCase.Execute(id);
+        return Ok(author);
     }
 }
