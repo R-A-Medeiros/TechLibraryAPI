@@ -19,7 +19,7 @@ public class GetByIdAuthorUseCase : IGetByIdAuthorUseCase
 
         if (author is null)
         {
-            throw new KeyNotFoundException("$\"Author with ID {id} not found.");
+            throw new KeyNotFoundException($"Author with ID {id} not found.");
         }
 
         return _mapper.Map<ResponseAuthorJson>(author);
