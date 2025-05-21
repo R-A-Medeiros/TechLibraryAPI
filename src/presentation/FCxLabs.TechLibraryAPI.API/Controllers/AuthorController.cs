@@ -3,6 +3,7 @@ using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Delete;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.GetAll;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.GetById;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Register;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Update;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
 using Microsoft.AspNetCore.Http;
@@ -58,6 +59,21 @@ public class AuthorController : ControllerBase
     public async Task<IActionResult> Delete([FromServices] IDeleteAuthorUseCase useCase, [FromRoute] int id)
     {
         await useCase.Execute(id);
+
+        return NoContent();
+    }
+
+    [HttpPut]
+    [Route("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Update(
+        [FromServices] IUpdateAuthorUseCase useCase, 
+        [FromRoute] int id, 
+        [FromBody] RequestUpdateAuthorJson request)
+    {
+        await useCase.Execute(id, request);
 
         return NoContent();
     }

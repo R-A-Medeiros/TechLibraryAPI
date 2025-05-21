@@ -3,6 +3,7 @@ using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Delete;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.GetAll;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.GetById;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Register;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Update;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FCxLabs.TechLibraryAPI.Application;
@@ -26,5 +27,6 @@ public static class DependencyInjectionExtension
         services.AddScoped<IGetAllAuthorUseCase, GetAllAuthorUseCase>();
         services.AddScoped<IGetByIdAuthorUseCase, GetByIdAuthorUseCase>();
         services.AddScoped<IDeleteAuthorUseCase, DeleteAuthorUseCase>();
+        services.AddScoped<IUpdateAuthorUseCase, UpdateAuthorUseCase>();
     }
 }
