@@ -8,6 +8,7 @@ using FCxLabs.TechLibraryAPI.Infrastructure.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using FCxLabs.TechLibraryAPI.Infrastructure;
 using FCxLabs.TechLibraryAPI.Application;
+using FCxLabs.TechLibraryAPI.API.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,8 @@ builder.Services.AddDbContext<TechLibraryDbContext>(options =>
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
+
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
 var app = builder.Build();
 

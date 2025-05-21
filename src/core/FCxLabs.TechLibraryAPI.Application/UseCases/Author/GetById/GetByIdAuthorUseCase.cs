@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FCxLabs.TechLibraryAPI.Application.ExceptionsBase;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
 using FCxLabs.TechLibraryAPI.Domain.Repositories;
 
@@ -19,7 +20,7 @@ public class GetByIdAuthorUseCase : IGetByIdAuthorUseCase
 
         if (author is null)
         {
-            throw new KeyNotFoundException($"Author with ID {id} not found.");
+            throw new NotFoundException($"Author with ID {id} not found.");
         }
 
         return _mapper.Map<ResponseAuthorJson>(author);
