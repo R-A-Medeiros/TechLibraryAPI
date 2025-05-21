@@ -23,7 +23,7 @@ namespace FCxLabs.TechLibraryAPI.API.Filters
         private void HandleProjectException(ExceptionContext context)
         {
             var techLibaryException = context.Exception as TechLibraryException;
-            var errorResponse = new ResponseeErrorJson(techLibaryException!.GetErrors());
+            var errorResponse = new ResponseErrorJson(techLibaryException!.GetErrors());
 
             context.HttpContext.Response.StatusCode = techLibaryException.StatusCode;
             context.Result = new ObjectResult(errorResponse);
@@ -31,7 +31,7 @@ namespace FCxLabs.TechLibraryAPI.API.Filters
 
         private void ThrowUnknowError(ExceptionContext context)
         {
-            var errorResponse = new ResponseeErrorJson("Unknow error");
+            var errorResponse = new ResponseErrorJson("Unknow error");
 
             context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
             context.Result = new ObjectResult(errorResponse);

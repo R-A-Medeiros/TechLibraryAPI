@@ -16,6 +16,12 @@ public class AuthorRepository : IAuthorRepository
        await _context.Authors.AddAsync(author); 
     }
 
+    public async Task Delete(int id)
+    {
+        var result = await _context.Authors.FirstAsync(a => a.Id == id);
+        _context.Authors.Remove(result!);        
+    }
+
     public async Task<List<Author>> GetAll()
     {
         return await _context.Authors

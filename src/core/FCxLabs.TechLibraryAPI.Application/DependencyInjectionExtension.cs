@@ -1,4 +1,5 @@
 ﻿using FCxLabs.TechLibraryAPI.Application.AutoMapper;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Delete;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.GetAll;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.GetById;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Register;
@@ -24,5 +25,6 @@ public static class DependencyInjectionExtension
         services.AddScoped<IRegisterAuthorUseCase, RegisterAuthorUseCase>();
         services.AddScoped<IGetAllAuthorUseCase, GetAllAuthorUseCase>();
         services.AddScoped<IGetByIdAuthorUseCase, GetByIdAuthorUseCase>();
+        services.AddScoped<IDeleteAuthorUseCase, DeleteAuthorUseCase>();
     }
 }

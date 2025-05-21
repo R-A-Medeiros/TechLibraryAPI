@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Delete;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.GetAll;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.GetById;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Register;
@@ -48,5 +49,16 @@ public class AuthorController : ControllerBase
     {
         var author = await useCase.Execute(id);
         return Ok(author);
+    }
+
+    [HttpDelete]
+    [Route("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Delete([FromServices] IDeleteAuthorUseCase useCase, [FromRoute] int id)
+    {
+        await useCase.Execute(id);
+
+        return NoContent();
     }
 }
