@@ -15,13 +15,15 @@ public class AutoMapping : Profile
 
     private void RequestToEntity()
     {
-        CreateMap<RequestRegisterAuthorJson, Author>();
+        CreateMap<RequestRegisteredAuthorJson, Author>();
+        CreateMap<RequestRegisteredBookJson, Book>();
         CreateMap<RequestUpdateAuthorJson, Author>();
     }
 
     private void EntityToResponse()
     {
         CreateMap<Author, ResponseRegisteredAuthorJson>();
+        CreateMap<Book, ResponseRegisteredBookJson>();
         CreateMap<Author, ResponseAuthorJson>();
     }
 }

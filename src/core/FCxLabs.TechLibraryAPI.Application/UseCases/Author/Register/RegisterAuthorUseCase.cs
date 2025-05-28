@@ -16,7 +16,7 @@ public class RegisterAuthorUseCase : IRegisterAuthorUseCase
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
-    public async Task<ResponseRegisteredAuthorJson> Execute(RequestRegisterAuthorJson request)
+    public async Task<ResponseRegisteredAuthorJson> Execute(RequestRegisteredAuthorJson request)
     {
         var author = _mapper.Map<Domain.Entities.Author>(request);
 

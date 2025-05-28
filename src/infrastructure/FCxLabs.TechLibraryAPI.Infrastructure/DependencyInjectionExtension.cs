@@ -19,5 +19,6 @@ public static class DependencyInjectionExtension
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IAuthorRepository, AuthorRepository>();
         services.AddScoped<IAuthorUpdateOnlyRepository, AuthorRepository>();
+        services.AddScoped<IBookRepository, BookRepository>();
     }
 }

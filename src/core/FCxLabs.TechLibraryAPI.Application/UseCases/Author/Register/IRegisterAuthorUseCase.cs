@@ -5,5 +5,5 @@ namespace FCxLabs.TechLibraryAPI.Application.UseCases.Author.Register;
 
 public interface IRegisterAuthorUseCase
 {
-    Task<ResponseRegisteredAuthorJson> Execute(RequestRegisterAuthorJson request);
+    Task<ResponseRegisteredAuthorJson> Execute(RequestRegisteredAuthorJson request);
 }

@@ -2,9 +2,11 @@
 
 namespace FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 
-public class RequestRegisterAuthorJson
+public class RequestRegisteredAuthorJson
 {
     [Required]
+    [MinLength(5)]
+    [MaxLength(255)]
     public string Name { get; set; }
     [Required]
     public DateTime Birth { get; set; }
