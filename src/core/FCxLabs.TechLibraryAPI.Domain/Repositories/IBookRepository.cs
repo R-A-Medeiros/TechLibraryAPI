@@ -7,4 +7,5 @@ public interface IBookRepository
     Task Add(Book book);
     Task<List<Book>> GetAll();
     Task<Book?> GetById(int id);
+    Task Delete(int id);
 }

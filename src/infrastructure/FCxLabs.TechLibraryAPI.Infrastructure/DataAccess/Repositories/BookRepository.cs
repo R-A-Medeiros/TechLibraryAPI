@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FCxLabs.TechLibraryAPI.Infrastructure.DataAccess.Repositories;
 
-public class BookRepository : IBookRepository
+public class BookRepository : IBookRepository, IBookReadOnlyRepository
 {
     private readonly TechLibraryDbContext _context;
 
@@ -15,6 +15,13 @@ public class BookRepository : IBookRepository
     public async Task Add(Book book)
     {
         await _context.Books.AddAsync(book);
+    }
+
+    public async Task Delete(int id)
+    {
+        var book = await _context.Books.FirstAsync(a => a.Id == id);
+        _context.Books.Remove(book);
+
     }
 
     public async Task<List<Book>> GetAll()
@@ -30,4 +37,12 @@ public class BookRepository : IBookRepository
             .AsNoTracking()
             .FirstOrDefaultAsync(x => x.Id == id);
     }
+
+    
+    async Task<Book?> IBookReadOnlyRepository.GetById(int id)
+    {
+        return await _context.Books
+            .FirstOrDefaultAsync(x => x.Id == id);
+    }
+
 }

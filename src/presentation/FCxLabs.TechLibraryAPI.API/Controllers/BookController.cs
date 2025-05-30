@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Book.Delete;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.GetAll;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.GetById;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.Register;
@@ -47,6 +48,17 @@ namespace FCxLabs.TechLibraryAPI.API.Controllers
         {
             var book = await useCase.Execute(id);
             return Ok(book);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Delete([FromServices] IDeleteBookUseCase useCase, [FromRoute] int id)
+        {
+            await useCase.Execute(id);
+
+            return NoContent();
         }
     }
 }
