@@ -25,5 +25,6 @@ public class AutoMapping : Profile
         CreateMap<Author, ResponseRegisteredAuthorJson>();
         CreateMap<Book, ResponseRegisteredBookJson>();
         CreateMap<Author, ResponseAuthorJson>();
+        CreateMap<Book, ResponseBookJson>();
     }
 }

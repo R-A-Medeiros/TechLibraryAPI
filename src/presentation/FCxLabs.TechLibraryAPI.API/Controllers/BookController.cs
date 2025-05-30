@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Book.GetAll;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.Register;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
@@ -19,6 +20,22 @@ namespace FCxLabs.TechLibraryAPI.API.Controllers
             var book = await useCase.Execute(request);
 
             return Created(string.Empty, book);
+        }
+
+
+        [HttpGet]
+        [ProducesResponseType(typeof(ResponseBooksJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> GetAll([FromServices] IGetAllBookUseCase useCase)
+        {
+            var books = await useCase.Execute();
+
+            if (books.Books.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(books);
         }
     }
 }
