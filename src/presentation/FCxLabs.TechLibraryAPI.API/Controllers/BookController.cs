@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.GetAll;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Book.GetById;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.Register;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
@@ -36,6 +37,16 @@ namespace FCxLabs.TechLibraryAPI.API.Controllers
             }
 
             return Ok(books);
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        [ProducesResponseType(typeof(ResponseAuthorJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> GetById([FromServices] IGetByIdBookUseCase useCase, [FromRoute] int id)
+        {
+            var book = await useCase.Execute(id);
+            return Ok(book);
         }
     }
 }

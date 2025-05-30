@@ -23,4 +23,11 @@ public class BookRepository : IBookRepository
             .AsNoTracking()
             .ToListAsync();
     }
+
+    public async Task<Book?> GetById(int id)
+    {
+        return await _context.Books
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == id);
+    }
 }
