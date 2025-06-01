@@ -17,17 +17,16 @@ public class BookRepository : IBookRepository, IBookReadOnlyRepository
         await _context.Books.AddAsync(book);
     }
 
-    public async Task Delete(int id)
+    public void Delete(Book book)
     {
-        var book = await _context.Books.FirstAsync(a => a.Id == id);
         _context.Books.Remove(book);
-
     }
 
     public async Task<List<Book>> GetAll()
     {
         return await _context.Books
             .AsNoTracking()
+            .Include(b => b.Author)
             .ToListAsync();
     }
 
@@ -35,10 +34,15 @@ public class BookRepository : IBookRepository, IBookReadOnlyRepository
     {
         return await _context.Books
             .AsNoTracking()
-            .FirstOrDefaultAsync(x => x.Id == id);
+            .Include(b => b.Author)
+            .FirstOrDefaultAsync(b => b.Id == id);
     }
 
-    
+    public void Update(Book book)
+    {
+       _context.Books .Update(book);
+    }
+
     async Task<Book?> IBookReadOnlyRepository.GetById(int id)
     {
         return await _context.Books

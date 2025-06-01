@@ -8,6 +8,7 @@ using FCxLabs.TechLibraryAPI.Application.UseCases.Book.Delete;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.GetAll;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.GetById;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.Register;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Book.Update;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FCxLabs.TechLibraryAPI.Application;
@@ -36,5 +37,6 @@ public static class DependencyInjectionExtension
         services.AddScoped<IGetAllBookUseCase, GetAllBookUseCase>();
         services.AddScoped<IGetByIdBookUseCase, GetByIdBookUseCase>();
         services.AddScoped<IDeleteBookUseCase, DeleteBookUseCase>();
+        services.AddScoped<IUpdateBookUseCase, UpdateBookUseCase>();
     }
 }

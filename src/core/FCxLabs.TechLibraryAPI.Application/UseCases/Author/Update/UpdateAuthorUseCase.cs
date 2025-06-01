@@ -8,18 +8,20 @@ namespace FCxLabs.TechLibraryAPI.Application.UseCases.Author.Update;
 public class UpdateAuthorUseCase : IUpdateAuthorUseCase
 {
     private readonly IAuthorUpdateOnlyRepository _repository;
+    private readonly IAuthorReadOnlyRepository _repositoryReadOnly;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public UpdateAuthorUseCase(IAuthorUpdateOnlyRepository repository, IUnitOfWork unitOfWork, IMapper mapper)
+    public UpdateAuthorUseCase(IAuthorUpdateOnlyRepository repository, IUnitOfWork unitOfWork, IMapper mapper, IAuthorReadOnlyRepository repositoryReadOnly)
     {
         _mapper = mapper;
         _repository = repository;
         _unitOfWork = unitOfWork;
+        _repositoryReadOnly = repositoryReadOnly;
     }
     public async Task Execute(int id, RequestUpdateAuthorJson request)
     {
-        var result = await _repository.GetById(id);
+        var result = await _repositoryReadOnly.GetById(id);
 
         if(result is null)
         {

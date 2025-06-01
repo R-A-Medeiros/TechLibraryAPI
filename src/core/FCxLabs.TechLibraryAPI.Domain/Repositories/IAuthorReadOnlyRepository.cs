@@ -2,7 +2,7 @@
 
 namespace FCxLabs.TechLibraryAPI.Domain.Repositories;
 
-public interface IAuthorUpdateOnlyRepository
+public interface IAuthorReadOnlyRepository
 {
-    void Update(Author author);
+    Task<Author?> GetById(int id);
 }

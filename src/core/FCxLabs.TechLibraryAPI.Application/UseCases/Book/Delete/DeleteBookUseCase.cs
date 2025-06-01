@@ -17,9 +17,14 @@ public class DeleteBookUseCase : IDeleteBookUseCase
     }
     public async Task Execute(int id)
     {
-      
+        var book = await _readonlyRepository.GetById(id);
+        
+        if (book is null)
+        {
+           throw new NotFoundException("Book not found.");
+        }
 
-        await _repository.Delete(id);
+         _repository.Delete(book);
         await _unitOfWork.Commit();
     }
 }
