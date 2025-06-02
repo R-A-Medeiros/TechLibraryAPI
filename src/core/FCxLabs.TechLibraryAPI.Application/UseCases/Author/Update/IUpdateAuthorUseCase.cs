@@ -4,6 +4,6 @@ namespace FCxLabs.TechLibraryAPI.Application.UseCases.Author.Update
 {
     public interface IUpdateAuthorUseCase
     {
-        Task Execute(int id, RequestUpdateAuthorJson request);
+        Task Execute(int id, RequestAuthorJson request);
     }
 }

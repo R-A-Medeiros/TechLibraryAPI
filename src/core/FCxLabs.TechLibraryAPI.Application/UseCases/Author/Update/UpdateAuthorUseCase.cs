@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
-using FCxLabs.TechLibraryAPI.Application.ExceptionsBase;
+using FCxLabs.TechLibraryAPI.Exception.ExceptionsBase;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Repositories;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Book;
+
 
 namespace FCxLabs.TechLibraryAPI.Application.UseCases.Author.Update;
 
@@ -19,8 +21,10 @@ public class UpdateAuthorUseCase : IUpdateAuthorUseCase
         _unitOfWork = unitOfWork;
         _repositoryReadOnly = repositoryReadOnly;
     }
-    public async Task Execute(int id, RequestUpdateAuthorJson request)
+    public async Task Execute(int id, RequestAuthorJson request)
     {
+        Validate(request);
+
         var result = await _repositoryReadOnly.GetById(id);
 
         if(result is null)
@@ -32,5 +36,20 @@ public class UpdateAuthorUseCase : IUpdateAuthorUseCase
         _repository.Update(result);
 
         await _unitOfWork.Commit();
+    }
+
+    public void Validate(RequestAuthorJson request)
+    {
+        var validator = new AuthorValidator();
+
+        var result = validator.Validate(request);
+
+        if (result.IsValid == false)
+        {
+            var errorMessages = result.Errors.Select(e => e.ErrorMessage).ToList();
+
+            throw new ErrorOnValidationException(errorMessages);
+        }
+
     }
 }

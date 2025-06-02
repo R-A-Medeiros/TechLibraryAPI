@@ -1,4 +1,4 @@
-﻿using FCxLabs.TechLibraryAPI.Application.ExceptionsBase;
+﻿using FCxLabs.TechLibraryAPI.Exception.ExceptionsBase;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

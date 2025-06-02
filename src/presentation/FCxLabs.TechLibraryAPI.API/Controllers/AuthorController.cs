@@ -20,7 +20,7 @@ public class AuthorController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Register(
         [FromServices] IRegisterAuthorUseCase useCase,
-        [FromBody] RequestRegisteredAuthorJson request)
+        [FromBody] RequestAuthorJson request)
     {
         var author = await useCase.Execute(request);
 
@@ -71,7 +71,7 @@ public class AuthorController : ControllerBase
     public async Task<IActionResult> Update(
         [FromServices] IUpdateAuthorUseCase useCase, 
         [FromRoute] int id, 
-        [FromBody] RequestUpdateAuthorJson request)
+        [FromBody] RequestAuthorJson request)
     {
         await useCase.Execute(id, request);
 

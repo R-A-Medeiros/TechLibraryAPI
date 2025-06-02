@@ -5,5 +5,5 @@ namespace FCxLabs.TechLibraryAPI.Application.UseCases.Book.Register;
 
 public interface IRegisterBookUseCase
 {
-    Task<ResponseRegisteredBookJson> Execute(RequestRegisteredBookJson request);
+    Task<ResponseRegisteredBookJson> Execute(RequestBookJson request);
 }

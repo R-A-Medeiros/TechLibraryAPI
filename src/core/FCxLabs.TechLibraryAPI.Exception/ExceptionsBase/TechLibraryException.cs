@@ -1,4 +1,4 @@
-﻿namespace FCxLabs.TechLibraryAPI.Application.ExceptionsBase;
+﻿namespace FCxLabs.TechLibraryAPI.Exception.ExceptionsBase;
 
 public abstract class TechLibraryException : SystemException
 {

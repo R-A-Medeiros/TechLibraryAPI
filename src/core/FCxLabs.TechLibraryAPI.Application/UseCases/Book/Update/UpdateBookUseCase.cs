@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using FCxLabs.TechLibraryAPI.Application.ExceptionsBase;
+using FCxLabs.TechLibraryAPI.Exception.ExceptionsBase;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Repositories;
+using System.ComponentModel.DataAnnotations;
 
 namespace FCxLabs.TechLibraryAPI.Application.UseCases.Book.Update;
 
@@ -19,8 +20,10 @@ public class UpdateBookUseCase : IUpdateBookUseCase
         _mapper = mapper;
         _unitOfWork = unitOfWork;
     }
-    public async Task Execute(int id, RequestUpdateBookJson request)
+    public async Task Execute(int id, RequestBookJson request)
     {
+        Validate(request);
+
         var book = await _readOnlyRepository.GetById(id);
 
         if (book is null)
@@ -32,5 +35,20 @@ public class UpdateBookUseCase : IUpdateBookUseCase
         _bookRepository.Update(book);
 
         await _unitOfWork.Commit();
+    }
+
+    public void Validate(RequestBookJson request)
+    {
+        var validator = new BookValidator();
+
+        var result = validator.Validate(request);
+
+        if (result.IsValid == false)
+        {
+            var errorMessages = result.Errors.Select(e => e.ErrorMessage).ToList();
+
+            throw new ErrorOnValidationException(errorMessages);
+        }
+
     }
 }

@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="FluentValidation" Version="12.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FCxLabs.TechLibraryAPI.Domain\FCxLabs.TechLibraryAPI.Domain.csproj" />
+    <ProjectReference Include="..\FCxLabs.TechLibraryAPI.Exception\FCxLabs.TechLibraryAPI.Exception.csproj" />
   </ItemGroup>
 
 </Project>

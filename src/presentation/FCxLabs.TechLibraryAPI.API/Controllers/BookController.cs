@@ -18,7 +18,7 @@ namespace FCxLabs.TechLibraryAPI.API.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRegisteredBookJson), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Register([FromServices] IRegisterBookUseCase useCase, [FromBody] RequestRegisteredBookJson request)
+        public async Task<IActionResult> Register([FromServices] IRegisterBookUseCase useCase, [FromBody] RequestBookJson request)
         {
             var book = await useCase.Execute(request);
 
@@ -67,7 +67,7 @@ namespace FCxLabs.TechLibraryAPI.API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Update([FromServices] IUpdateBookUseCase useCase, [FromRoute] int id, [FromBody] RequestUpdateBookJson request)
+        public async Task<IActionResult> Update([FromServices] IUpdateBookUseCase useCase, [FromRoute] int id, [FromBody] RequestBookJson request)
         {
             await useCase.Execute(id, request);
 

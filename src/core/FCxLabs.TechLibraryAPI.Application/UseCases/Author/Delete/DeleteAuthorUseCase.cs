@@ -1,6 +1,6 @@
 ﻿
-using FCxLabs.TechLibraryAPI.Application.ExceptionsBase;
 using FCxLabs.TechLibraryAPI.Domain.Repositories;
+using FCxLabs.TechLibraryAPI.Exception.ExceptionsBase;
 
 namespace FCxLabs.TechLibraryAPI.Application.UseCases.Author.Delete;
 

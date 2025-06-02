@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace FCxLabs.TechLibraryAPI.Application.ExceptionsBase;
+namespace FCxLabs.TechLibraryAPI.Exception.ExceptionsBase;
 
 public class NotFoundException : TechLibraryException
 {
