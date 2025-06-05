@@ -13,4 +13,10 @@
     <PackageReference Include="Moq" Version="4.20.72" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\core\FCxLabs.TechLibraryAPI.Application\FCxLabs.TechLibraryAPI.Application.csproj" />
+    <ProjectReference Include="..\..\src\core\FCxLabs.TechLibraryAPI.Domain\FCxLabs.TechLibraryAPI.Domain.csproj" />
+    <ProjectReference Include="..\CommonTestUtilities\CommonTestUtilities.csproj" />
+  </ItemGroup>
+
 </Project>
