@@ -9,7 +9,7 @@ public class BookValidator : AbstractValidator<RequestBookJson>
     {
         RuleFor(book => book.Title).NotEmpty().WithMessage("The title is required.");
         RuleFor(book => book.Genre).NotEmpty().WithMessage("The genre is required.");
-        RuleFor(book => book.PublicationYear).GreaterThan(0).WithMessage("Publication date cannot be in the future.");
+        RuleFor(book => book.PublicationYear).Must(date => date <= DateOnly.FromDateTime(DateTime.UtcNow)).WithMessage("Publication date cannot be in the future.");
         RuleFor(book => book.AuthorId).GreaterThan(0).WithMessage("Author ID must be greater than 0.");
     
     }

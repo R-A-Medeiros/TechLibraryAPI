@@ -6,5 +6,5 @@ public class RequestUpdateBookJson
 {
     public string Title { get; set; }
     public string Genre { get; set; }
-    public int PublicationYear { get; set; }
+    public DateOnly PublicationYear { get; set; }
 }

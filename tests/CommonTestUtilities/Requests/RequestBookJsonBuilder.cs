@@ -10,8 +10,8 @@ namespace CommonTestUtilities.Requests
             return new Faker<RequestBookJson>()
                  .RuleFor(r => r.Title, faker => faker.Lorem.Sentence(3))
                  .RuleFor(r => r.Genre, faker => faker.Commerce.Categories(1)[0])
-                 .RuleFor(r => r.PublicationYear, faker => faker.Date.Past(20).Year)
-                 .RuleFor(r => r.AuthorId, faker => faker.Random.Int());
+                 .RuleFor(r => r.PublicationYear, faker => faker.Date.PastDateOnly())
+                 .RuleFor(r => r.AuthorId, faker => faker.Random.Int(1, 1000));
                  
 
         }
