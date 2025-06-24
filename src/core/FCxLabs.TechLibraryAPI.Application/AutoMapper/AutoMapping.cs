@@ -26,6 +26,7 @@ public class AutoMapping : Profile
         CreateMap<Author, ResponseRegisteredAuthorJson>();
         CreateMap<Book, ResponseRegisteredBookJson>();
         CreateMap<Author, ResponseAuthorJson>();
-        CreateMap<Book, ResponseBookJson>();
+        CreateMap<Book, ResponseBookJson>()
+            .ForMember(dest => dest.PublicationYear,opt => opt.MapFrom(src => src.PublicationYear.Year)); 
     }
 }

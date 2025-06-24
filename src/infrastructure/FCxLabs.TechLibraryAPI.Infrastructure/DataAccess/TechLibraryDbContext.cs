@@ -13,6 +13,6 @@ public class TechLibraryDbContext : DbContext
         modelBuilder.Entity<Book>()
                     .HasOne(b => b.Author)
                     .WithMany(a => a.Books)
-                    .HasForeignKey(b => b.AuthorId);                  
+                    .HasForeignKey(b => b.AuthorId);
     }
 }

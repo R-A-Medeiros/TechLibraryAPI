@@ -12,6 +12,18 @@ using FCxLabs.TechLibraryAPI.API.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+// Configurar CORS
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowAll", policy =>
+//    {
+//        policy.AllowAnyOrigin()
+//              .AllowAnyMethod()
+//              .AllowAnyHeader();
+//    });
+//});
+
 //Garante que a app escute sempre na mesma URL
 builder.WebHost.UseUrls("https://localhost:5001");
 

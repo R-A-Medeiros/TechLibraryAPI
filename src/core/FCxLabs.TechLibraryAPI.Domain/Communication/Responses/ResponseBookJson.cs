@@ -9,5 +9,5 @@ public class ResponseBookJson
     public string Genre { get; set; }
     public int PublicationYear { get; set; }
     public int AuthorId { get; set; }
-    public Author Author { get; set; } = default!;
+    //public Author Author { get; set; } = default!;
 }

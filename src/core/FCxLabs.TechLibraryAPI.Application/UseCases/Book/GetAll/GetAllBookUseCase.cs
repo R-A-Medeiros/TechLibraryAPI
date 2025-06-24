@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using AutoMapper;
+﻿using AutoMapper;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
 using FCxLabs.TechLibraryAPI.Domain.Repositories;
 
