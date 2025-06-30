@@ -19,6 +19,7 @@ public class AutoMapping : Profile
         CreateMap<RequestBookJson, Book>();
         CreateMap<RequestUpdateAuthorJson, Author>();
         CreateMap<RequestUpdateBookJson, Book>();
+        CreateMap<RequestRegisterUserJson, User>();
     }
 
     private void EntityToResponse()
