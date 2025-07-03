@@ -1,4 +1,5 @@
 ﻿using FCxLabs.TechLibraryAPI.Domain.Repositories;
+using FCxLabs.TechLibraryAPI.Domain.Security.Cryptography;
 using FCxLabs.TechLibraryAPI.Infrastructure.DataAccess.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +12,8 @@ public static class DependencyInjectionExtension
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {      
         AddRepositories(services);
+
+        services.AddScoped<IPasswordEncripter, Infrastructure.Security.BCrypt>();
     }
 
 

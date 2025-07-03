@@ -19,7 +19,8 @@ public class AutoMapping : Profile
         CreateMap<RequestBookJson, Book>();
         CreateMap<RequestUpdateAuthorJson, Author>();
         CreateMap<RequestUpdateBookJson, Book>();
-        CreateMap<RequestRegisterUserJson, User>();
+        CreateMap<RequestRegisterUserJson, User>()
+            .ForMember(dest => dest.Password, config => config.Ignore());
     }
 
     private void EntityToResponse()
