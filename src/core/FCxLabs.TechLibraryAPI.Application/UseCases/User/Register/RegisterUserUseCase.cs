@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
+using FCxLabs.TechLibraryAPI.Domain.Repositories;
 using FCxLabs.TechLibraryAPI.Domain.Security.Cryptography;
 using FCxLabs.TechLibraryAPI.Exception.ExceptionsBase;
 
@@ -10,16 +11,17 @@ public class RegisterUserUseCase : IRegisterUserUseCase
 {
     private readonly IMapper _mapper;
     private readonly IPasswordEncripter _passwordEncripter;
-            
-    public RegisterUserUseCase(IMapper mapper, IPasswordEncripter passwordEncripter)
+    private readonly IUserReadOnlyRepository _userReadOnlyRepository;
+    public RegisterUserUseCase(IMapper mapper, IPasswordEncripter passwordEncripter, IUserReadOnlyRepository userReadOnlyRepository)
     {
         _mapper = mapper;
         _passwordEncripter = passwordEncripter;
+        _userReadOnlyRepository = userReadOnlyRepository;
     }
 
     public async Task<ResponseRegisteredUserJson> Execute(RequestRegisterUserJson request)
     {
-        Validate(request);
+        await Validate(request);
 
         var user = _mapper.Map<Domain.Entities.User>(request);
         user.Password = _passwordEncripter.Encrypt(request.Password);
@@ -30,9 +32,15 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         };
     }
 
-    private void Validate(RequestRegisterUserJson request)
+    private async Task Validate(RequestRegisterUserJson request)
     {
         var result = new RegisterUserValidator().Validate(request);
+
+        var emailExist = await _userReadOnlyRepository.ExistActiveUserWithEmail(request.Email);
+        if (emailExist)
+        {
+            result.Errors.Add(new FluentValidation.Results.ValidationFailure("Email", "Email already registered."));
+        }
 
         if (result.IsValid == false)
         {
