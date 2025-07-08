@@ -6,8 +6,8 @@ internal class BCrypt : IPasswordEncripter
 {
     public string Encrypt(string password)
     {
-        string passwordHash = BCrypt.HashPassword(password);
-
+        //string passwordHash = BCrypt.HashPassword(password);
+        string passwordHash = BC.HashPassword(password);
         return passwordHash;
     }
 }

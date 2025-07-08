@@ -3,6 +3,7 @@ using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
 using FCxLabs.TechLibraryAPI.Domain.Repositories;
 using FCxLabs.TechLibraryAPI.Domain.Security.Cryptography;
+using FCxLabs.TechLibraryAPI.Domain.Security.Tokens;
 using FCxLabs.TechLibraryAPI.Exception.ExceptionsBase;
 
 namespace FCxLabs.TechLibraryAPI.Application.UseCases.User.Register;
@@ -12,11 +13,23 @@ public class RegisterUserUseCase : IRegisterUserUseCase
     private readonly IMapper _mapper;
     private readonly IPasswordEncripter _passwordEncripter;
     private readonly IUserReadOnlyRepository _userReadOnlyRepository;
-    public RegisterUserUseCase(IMapper mapper, IPasswordEncripter passwordEncripter, IUserReadOnlyRepository userReadOnlyRepository)
+    private readonly IUserWriteOnlyRepository _userWriteOnlyRepository;
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IAccessTokenGenerator _tokenGenerator;
+    public RegisterUserUseCase(
+        IMapper mapper,
+        IPasswordEncripter passwordEncripter,
+        IUserReadOnlyRepository userReadOnlyRepository,
+        IUserWriteOnlyRepository userWriteOnlyRepository,
+        IUnitOfWork unitOfWork,
+        IAccessTokenGenerator tokenGenerato)
     {
-        _mapper = mapper;
-        _passwordEncripter = passwordEncripter;
-        _userReadOnlyRepository = userReadOnlyRepository;
+        _mapper                  = mapper;
+        _passwordEncripter       = passwordEncripter;
+        _userReadOnlyRepository  = userReadOnlyRepository;
+        _userWriteOnlyRepository = userWriteOnlyRepository;
+        _unitOfWork              = unitOfWork;
+        _tokenGenerator = tokenGenerato;
     }
 
     public async Task<ResponseRegisteredUserJson> Execute(RequestRegisterUserJson request)
@@ -25,10 +38,15 @@ public class RegisterUserUseCase : IRegisterUserUseCase
 
         var user = _mapper.Map<Domain.Entities.User>(request);
         user.Password = _passwordEncripter.Encrypt(request.Password);
+        user.UserIdentifier = Guid.NewGuid();
+        
+        await _userWriteOnlyRepository.Add(user);
+        await _unitOfWork.Commit();
 
         return new ResponseRegisteredUserJson
         {
             Name = user.Name,
+            Token = _tokenGenerator.Generate(user)
         };
     }
 

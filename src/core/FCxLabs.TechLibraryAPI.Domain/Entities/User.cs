@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using FCxLabs.TechLibraryAPI.Domain.Enums;
 
 namespace FCxLabs.TechLibraryAPI.Domain.Entities;
 
@@ -9,5 +10,5 @@ public class User
     public string Email { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
     public Guid UserIdentifier { get; set; }
-    public string Role { get; set; } = string.Empty;
+    public string Role { get; set; } = Roles.TEAM_MEMBER;
 }
