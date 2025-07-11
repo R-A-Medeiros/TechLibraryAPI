@@ -10,5 +10,10 @@ internal class BCrypt : IPasswordEncripter
         string passwordHash = BC.HashPassword(password);
         return passwordHash;
     }
+
+    public bool Verify(string password, string passwordHash)
+    {
+        return BC.Verify(password, passwordHash);
+    }
 }
 
