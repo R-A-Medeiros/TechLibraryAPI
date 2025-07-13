@@ -6,6 +6,7 @@ using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Register;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Update;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ public class AuthorController : ControllerBase
     [HttpPost]
     [ProducesResponseType(typeof(ResponseRegisteredAuthorJson), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [Authorize]
     public async Task<IActionResult> Register(
         [FromServices] IRegisterAuthorUseCase useCase,
         [FromBody] RequestAuthorJson request)
@@ -56,6 +58,7 @@ public class AuthorController : ControllerBase
     [Route("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+    [Authorize]
     public async Task<IActionResult> Delete([FromServices] IDeleteAuthorUseCase useCase, [FromRoute] int id)
     {
         await useCase.Execute(id);
@@ -68,6 +71,7 @@ public class AuthorController : ControllerBase
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+    [Authorize]
     public async Task<IActionResult> Update(
         [FromServices] IUpdateAuthorUseCase useCase, 
         [FromRoute] int id, 
