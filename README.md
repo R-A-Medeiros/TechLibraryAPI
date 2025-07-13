@@ -61,8 +61,9 @@ Método	Endpoint	Descrição
 
 O projeto está em constante evolução. Algumas melhorias planejadas incluem:
 
-- 🔐 **Autenticação com JWT**  
-  Implementar autenticação baseada em tokens JWT para proteger os endpoints e garantir acesso apenas a usuários autenticados.
+- 🧪 **Testes Unitários para registro de usuários**
+ 
+   Implementação de testes automatizados para verificar o correto funcionamento do processo de registro, incluindo cenários de sucesso, validação de campos obrigatórios (e-mail e senha), tratamento de dados         inválidos e verificação de duplicidade de e-mail. Isso garantirá maior confiabilidade e robustez à funcionalidade de cadastro.
 
 - 🧑‍💻 **Controle de Acesso por Perfil (Authorization)**  
   Adição de níveis de permissão para acesso diferenciado de acordo com o papel do usuário (ex: administrador, leitor, editor).
