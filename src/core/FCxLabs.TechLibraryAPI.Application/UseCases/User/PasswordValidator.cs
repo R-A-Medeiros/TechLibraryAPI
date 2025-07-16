@@ -1,5 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FluentValidation;
 using FluentValidation.Validators;
 
@@ -13,7 +12,7 @@ public class PasswordValidator<T> : PropertyValidator<T, string>
 
     protected override string GetDefaultMessageTemplate(string errorCode)
     {
-        return "{{{ERROR_MESSAGE_KEY}}}";
+        return $"{{{ERROR_MESSAGE_KEY}}}";
     }
 
     public override bool IsValid(ValidationContext<T> context, string value)
