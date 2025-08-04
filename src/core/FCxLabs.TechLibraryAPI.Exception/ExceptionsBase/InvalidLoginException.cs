@@ -5,7 +5,7 @@ namespace FCxLabs.TechLibraryAPI.Exception.ExceptionsBase;
 
 public class InvalidLoginException : TechLibraryException
 {
-    public InvalidLoginException() : base("Email or password invalid")
+    public InvalidLoginException() : base("Email or password invalid.")
     {
     }
 
