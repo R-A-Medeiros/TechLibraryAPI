@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FCxLabs.TechLibraryAPI.Domain.Entities;
 
-namespace FCxLabs.TechLibraryAPI.Domain.Services.LoggedUser
+namespace FCxLabs.TechLibraryAPI.Domain.Services.LoggedUser;
+
+public interface ILoggedUser
 {
-    internal interface ILoggedUser
-    {
-    }
+    Task<User> Get();
 }

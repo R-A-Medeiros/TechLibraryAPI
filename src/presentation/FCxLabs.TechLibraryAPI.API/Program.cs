@@ -15,6 +15,8 @@ using Microsoft.Extensions.Configuration;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
+using FCxLabs.TechLibraryAPI.Domain.Security.Tokens;
+using FCxLabs.TechLibraryAPI.API.Token;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -89,6 +91,10 @@ builder.Services.AddDbContext<TechLibraryDbContext>(options =>
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
+
+builder.Services.AddScoped<ITokenProvider, HttpContextTokenValue>();
+
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 

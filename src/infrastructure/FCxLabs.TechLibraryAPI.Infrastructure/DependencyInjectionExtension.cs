@@ -1,8 +1,10 @@
 ﻿using FCxLabs.TechLibraryAPI.Domain.Repositories;
 using FCxLabs.TechLibraryAPI.Domain.Security.Cryptography;
 using FCxLabs.TechLibraryAPI.Domain.Security.Tokens;
+using FCxLabs.TechLibraryAPI.Domain.Services.LoggedUser;
 using FCxLabs.TechLibraryAPI.Infrastructure.DataAccess.Repositories;
 using FCxLabs.TechLibraryAPI.Infrastructure.Security.Tokens;
+using FCxLabs.TechLibraryAPI.Infrastructure.Services.LoggedUser;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,10 +15,12 @@ public static class DependencyInjectionExtension
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddScoped<IPasswordEncripter, Infrastructure.Security.BCrypt>();
+        services.AddScoped<ILoggedUser, LoggedUser>();
+
         AddToken(services, configuration);
         AddRepositories(services);
-
-        services.AddScoped<IPasswordEncripter, Infrastructure.Security.BCrypt>();
+        
     }
 
     private static void AddToken(IServiceCollection services, IConfiguration configuration)
