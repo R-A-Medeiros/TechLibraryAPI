@@ -70,6 +70,23 @@ builder.Services.AddSwaggerGen(config =>
 builder.Services.AddDbContext<TechLibraryDbContext>(options =>
     options.UseInMemoryDatabase("DBInMemory"));
 
+// Pega a connection string da configuração (appsettings ou env var)
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+//builder.Services.AddDbContext<TechLibraryDbContext>(options =>
+//{
+//    if (string.IsNullOrEmpty(connectionString))
+//    {
+//        // fallback para InMemory (ex.: testes locais)
+//        options.UseInMemoryDatabase("TechLibraryDB");
+//    }
+//    else
+//    {
+//        // Usa PostgreSQL
+//        options.UseNpgsql(connectionString);
+//    }
+//});
+
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 
