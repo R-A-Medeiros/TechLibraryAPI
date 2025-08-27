@@ -6,6 +6,7 @@ using FCxLabs.TechLibraryAPI.Application.UseCases.Book.Register;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.Update;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
+using FCxLabs.TechLibraryAPI.Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +38,7 @@ namespace FCxLabs.TechLibraryAPI.API.Controllers
 
             if (books.Books.Count == 0)
             {
-                return NotFound();
+                return NoContent();
             }
 
             return Ok(books);
@@ -57,7 +58,7 @@ namespace FCxLabs.TechLibraryAPI.API.Controllers
         [Route("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
-        [Authorize]
+        [Authorize(Roles = Roles.ADMIN)]
         public async Task<IActionResult> Delete([FromServices] IDeleteBookUseCase useCase, [FromRoute] int id)
         {
             await useCase.Execute(id);

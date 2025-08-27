@@ -6,6 +6,7 @@ using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Register;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Author.Update;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Responses;
+using FCxLabs.TechLibraryAPI.Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -58,7 +59,7 @@ public class AuthorController : ControllerBase
     [Route("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
-    [Authorize]
+    [Authorize(Roles = Roles.ADMIN)]
     public async Task<IActionResult> Delete([FromServices] IDeleteAuthorUseCase useCase, [FromRoute] int id)
     {
         await useCase.Execute(id);
