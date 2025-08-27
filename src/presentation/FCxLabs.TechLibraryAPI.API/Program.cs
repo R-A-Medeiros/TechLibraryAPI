@@ -109,7 +109,7 @@ builder.Services.AddAuthentication(config =>
     config.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
     {
         ValidateIssuer = false,
-        ValidateAudience = true,
+        ValidateAudience = false,
         ClockSkew= new TimeSpan(0),
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(signingKey!))
     };
@@ -150,8 +150,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 await app.RunAsync();
