@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{8D89295C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCxLabs.TechLibraryAPI.API", "src\presentation\FCxLabs.TechLibraryAPI.API\FCxLabs.TechLibraryAPI.API.csproj", "{0FC2CF46-2B43-41F1-8DE6-A08718C4D2FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCxLabs.TechLibraryAPI.Tests", "tests\FCxLabs.TechLibraryAPI.Tests\FCxLabs.TechLibraryAPI.Tests.csproj", "{6BEE4C7D-31FF-465C-BE6F-BFC044AC5A01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Tests", "tests\FCxLabs.TechLibraryAPI.Tests\Validators.Tests.csproj", "{6BEE4C7D-31FF-465C-BE6F-BFC044AC5A01}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FCxLabs.TechLibraryAPI.Infrastructure", "src\infrastructure\FCxLabs.TechLibraryAPI.Infrastructure\FCxLabs.TechLibraryAPI.Infrastructure.csproj", "{A16DEDC3-43FD-414B-9B1E-13D74E8D9F9F}"
 EndProject
