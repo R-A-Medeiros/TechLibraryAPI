@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace WebApi.Test.Users.Register;
 
-public class RegisterUserTest : IClassFixture<CustomWebApplicationFactory>
+public class RegisterUserTest : TechLibraryClassFixture
 {
     private const string METHOD = "api/User";
 
     private readonly HttpClient _httpClient;
-    public RegisterUserTest(CustomWebApplicationFactory webApplicationFactory)
+    public RegisterUserTest(CustomWebApplicationFactory webApplicationFactory) : base(webApplicationFactory)
     {
         _httpClient = webApplicationFactory.CreateClient();
     }

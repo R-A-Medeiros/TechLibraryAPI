@@ -2,7 +2,6 @@
 using FCxLabs.TechLibraryAPI.Exception.ExceptionsBase;
 using FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 using FCxLabs.TechLibraryAPI.Domain.Repositories;
-using System.ComponentModel.DataAnnotations;
 using FCxLabs.TechLibraryAPI.Domain.Services.LoggedUser;
 
 namespace FCxLabs.TechLibraryAPI.Application.UseCases.Book.Update;

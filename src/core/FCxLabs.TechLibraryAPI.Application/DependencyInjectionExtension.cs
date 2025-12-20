@@ -9,8 +9,13 @@ using FCxLabs.TechLibraryAPI.Application.UseCases.Book.GetAll;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.GetById;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.Register;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Book.Update;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Loan.GetAll;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Loan.GetById;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Loan.Register;
+using FCxLabs.TechLibraryAPI.Application.UseCases.Loan.ReturnLoan;
 using FCxLabs.TechLibraryAPI.Application.UseCases.Login.DoLogin;
 using FCxLabs.TechLibraryAPI.Application.UseCases.User.Register;
+using FCxLabs.TechLibraryAPI.Domain.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FCxLabs.TechLibraryAPI.Application;
@@ -42,5 +47,10 @@ public static class DependencyInjectionExtension
         services.AddScoped<IUpdateBookUseCase, UpdateBookUseCase>();
         services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
         services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
+        services.AddScoped<IRegisterLoanUseCase, RegisterLoanUseCase>();
+        services.AddScoped<IGetAllLoanUseCase, GetAllLoanUseCase>();
+        services.AddScoped<IGetByIdLoanUseCase, GetByIdLoanUseCase>();
+        services.AddScoped<IReturnLoanUseCase, ReturnLoanUseCase>();
+
     }
 }

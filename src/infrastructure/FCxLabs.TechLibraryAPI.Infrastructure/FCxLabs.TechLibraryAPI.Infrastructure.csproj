@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\core\FCxLabs.TechLibraryAPI.Domain\FCxLabs.TechLibraryAPI.Domain.csproj" />
+    <ProjectReference Include="..\..\core\FCxLabs.TechLibraryAPI.Exception\FCxLabs.TechLibraryAPI.Exception.csproj" />
   </ItemGroup>
 
 </Project>

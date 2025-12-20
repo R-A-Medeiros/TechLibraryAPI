@@ -1,5 +1,6 @@
 ﻿using CommonTestUtilities.Entities;
 using FCxLabs.TechLibraryAPI.Domain.Security.Cryptography;
+using FCxLabs.TechLibraryAPI.Domain.Security.Tokens;
 using FCxLabs.TechLibraryAPI.Infrastructure.DataAccess;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -12,6 +13,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 {
     private FCxLabs.TechLibraryAPI.Domain.Entities.User _user;
     private string _password;
+    private string _token;
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
@@ -29,14 +31,18 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
                 var scope = services.BuildServiceProvider().CreateScope();
                 var dbContext = scope.ServiceProvider.GetRequiredService<TechLibraryDbContext>();
                 var passwordEncripter = scope.ServiceProvider.GetRequiredService<IPasswordEncripter>();
+                var tokenGenerator = scope.ServiceProvider.GetRequiredService<IAccessTokenGenerator>();
 
                 StartDatabase(dbContext, passwordEncripter);
+
+                _token = tokenGenerator.Generate(_user);
             });
     }
 
     public string GetEmail() => _user.Email;
     public string GetName() => _user.Name;
     public string GetPassword() => _password;
+    public  string GetToken() => _token;    
 
     private void StartDatabase(TechLibraryDbContext dbContext, IPasswordEncripter passwordEncripter)
     {

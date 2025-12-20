@@ -4,6 +4,6 @@ namespace FCxLabs.TechLibraryAPI.Domain.Communication.Requests;
 
 public class RequestLoanJson
 {
-    public int BookId { get; set; }
-    public int Days { get; set; } = LoanTerm.STARNDARD;
+    public int BookCopyId { get; set; }
+    public int loanTermDays { get; set; } = LoanTerm.STARNDARD;
 }

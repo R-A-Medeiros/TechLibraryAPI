@@ -21,6 +21,9 @@ public class AutoMapping : Profile
         CreateMap<RequestUpdateBookJson, Book>();
         CreateMap<RequestRegisterUserJson, User>()
             .ForMember(dest => dest.Password, config => config.Ignore());
+
+        CreateMap<RequestLoanJson, Loan>();
+        CreateMap<ResponseShortLoanJson, Loan>();
     }
 
     private void EntityToResponse()
@@ -29,6 +32,9 @@ public class AutoMapping : Profile
         CreateMap<Book, ResponseRegisteredBookJson>();
         CreateMap<Author, ResponseAuthorJson>();
         CreateMap<Book, ResponseBookJson>()
-            .ForMember(dest => dest.PublicationYear,opt => opt.MapFrom(src => src.PublicationYear.Year)); 
+            .ForMember(dest => dest.PublicationYear,opt => opt.MapFrom(src => src.PublicationYear.Year));
+        CreateMap<Loan, ResponseRegisteredLoanJson>();
+        CreateMap<Loan, ResponseShortLoanJson>();
+        CreateMap<Loan, ResponseLoanJson>();
     }
 }

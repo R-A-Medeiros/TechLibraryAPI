@@ -40,7 +40,7 @@ public class BookRepository : IBookRepository, IBookReadOnlyRepository
 
     public void Update(Book book)
     {
-       _context.Books .Update(book);
+       _context.Books.Update(book);
     }
 
     async Task<Book?> IBookReadOnlyRepository.GetById(int id)

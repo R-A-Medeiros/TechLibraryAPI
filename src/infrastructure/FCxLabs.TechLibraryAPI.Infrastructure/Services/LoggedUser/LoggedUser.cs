@@ -3,6 +3,7 @@ using System.Security.Claims;
 using FCxLabs.TechLibraryAPI.Domain.Entities;
 using FCxLabs.TechLibraryAPI.Domain.Security.Tokens;
 using FCxLabs.TechLibraryAPI.Domain.Services.LoggedUser;
+using FCxLabs.TechLibraryAPI.Exception.ExceptionsBase;
 using FCxLabs.TechLibraryAPI.Infrastructure.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,8 +30,9 @@ public class LoggedUser : ILoggedUser
 
         var identifier = jwtSecurityToken.Claims.First(claim => claim.Type == ClaimTypes.Sid).Value;
 
-       return await _dbcontext.Users
-            .AsNoTracking()
-            .FirstAsync(user => user.UserIdentifier == Guid.Parse(identifier));
+        return await _dbcontext.Users
+             .AsNoTracking()
+             .FirstAsync(user => user.UserIdentifier == Guid.Parse(identifier));
     }
+
 }
