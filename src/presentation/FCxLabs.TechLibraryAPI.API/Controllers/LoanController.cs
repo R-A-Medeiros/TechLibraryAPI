@@ -19,6 +19,7 @@ public class LoanController : ControllerBase
     [ProducesResponseType(typeof(ResponseRegisteredLoanJson), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Register(
         [FromServices] IRegisterLoanUseCase useCase,
         [FromBody] RequestLoanJson request)
@@ -31,6 +32,7 @@ public class LoanController : ControllerBase
     [ProducesResponseType(typeof(ResponseLoanJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [HttpGet("{id}")]
+    [Authorize]
     public async Task<IActionResult> GetById([FromServices] IGetByIdLoanUseCase useCase, [FromRoute] int id)
     {
         //var loan = await useCase.Execute();
@@ -43,6 +45,7 @@ public class LoanController : ControllerBase
     [ProducesResponseType(typeof(ResponseLoanJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> GetAll([FromServices] IGetAllLoanUseCase useCase)
     {
 
@@ -59,6 +62,7 @@ public class LoanController : ControllerBase
     [HttpPost("{loanId:int}/return")]
     [ProducesResponseType(typeof(ResponseLoanJson), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [Authorize]
     public async Task<IActionResult> ReturnBook(int loanId, [FromServices] IReturnLoanUseCase useCase)
     {
        var loan = await useCase.Execute(loanId);
